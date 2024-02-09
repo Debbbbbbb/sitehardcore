@@ -1,0 +1,306 @@
+/* seletor{
+    propriedade:valor;
+} */
+
+:root{
+    --brand: #B91F33;    
+    --primary: #101417;
+    --contrast: #E0E34C;
+    --gray-light: #E1E1E1;
+    --gray-medium: #666666;
+    --white: #FFFFFF;
+    --black: #000000;
+    --rounded: 3px;
+    --section-space: 100px;    
+}
+
+*/*seletor all - formata todos os elementos separadamente*/{
+
+    font-family: 'Teko', sans-serif;
+    text-transform: uppercase; /*aplica maiúsculo aos textos*/
+}
+
+html{
+    scroll-behavior: smooth; /*faz com que a navegação fique suave*/
+}
+
+body{
+    margin: 0;    
+    background-color: var(--primary);
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
+h2{
+    color: var(--white);
+    font-size: 40px;
+    line-height: 85%;
+}
+
+p{
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--gray-light);
+}
+
+a{
+    text-decoration: none; /*retirando o sublinhado de todos os links*/
+}
+
+img{
+    display: block;    
+}
+
+/*********Utilitários***********/
+
+.btn{
+    background-color: var(--brand);
+    color: #FFFFFF;
+    font-size: 18px;
+    padding: 10px 60px 6px 60px; /*top right bottom left*/
+    border-radius: var(--rounded);
+    display: inline-block;
+    transition: 0.2s;
+    border: solid 2px transparent;
+    /*cursor com img=cursor: url(../img/cursor.png) tamanho:14 14 , pointer (se não carregar irá assumir um cursor do navegador);*/
+    cursor: pointer;
+
+}
+
+.btn:hover{
+    transform: scale(0.96);
+}
+
+.btn-outline{
+    background-color: transparent;
+    border: solid 2px var(--brand);
+}
+
+.container{
+    width: 1140px; /*largura*/
+    height: auto; /*altura*/
+    /*centraliza a div*/
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.header{
+    background-color: var(--black);
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    /*posição fixa APÓS começar a rolar a página*/
+    position: sticky;
+    top: 0;
+    z-index: 1;/*faz com que o elemento posicionado fique X camadas a cima*/
+}
+
+
+
+/*formatando o container que está dentro do header*/
+.header .container{    
+    display: flex; /*habilita o flexbox*/   
+    justify-content: space-between; /*alinhamento no eixo X (horizontal)*/
+    align-items: center; /*alinhamento no eixo Y (vertical)*/
+}
+
+/*formatando todos os links do menu*/
+.menu a{    
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 700;    
+    margin-left: 111px;
+}
+
+/*Ao passar o mouse nos links do menu*/
+.menu a:hover{
+    color: var(--brand);
+}
+
+.hero-section{
+    background-image: url(../img/background.jpg);
+    background-size: cover; /*faz com que a imagem cubra toda a div*/
+    height: calc(100vh - 100px); /*View Height -> Unidade referente ao navegador*/
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-section h1{
+    color: var(--gray-light);
+    font-size: 96px;
+    line-height: 90%;
+}
+
+.hero-section p{
+    color: var(--gray-light);
+    font-size: 24px;
+}
+
+.nossa-academia{
+    margin-top: var(--section-space);
+    margin-bottom: var(--section-space);
+    display: flex;
+    align-items: center;    
+    column-gap: 24px; /*espaçamento entre os flex-items*/
+}
+
+.faca-parte{
+    background-color: var(--gray-light);
+}
+
+.faca-parte h2{
+    color: var(--primary);
+}
+
+.faca-parte p{
+    color: var(--gray-medium);
+}
+
+.faca-parte .content{    
+    width: 850px;
+    padding: 37px 0;    
+}
+
+.faca-parte .container{
+    /*posição para servir de referência ao absolute da imagem*/
+    position: relative;
+}
+
+.faca-parte .image{
+    /*Posição em relação ao elemento pai (desde que ele também tenha position, 
+    caso contrário será em relação ao body) */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.planos{
+    margin-top: var(--section-space);
+    margin-bottom: var(--section-space);
+    text-align: center;
+}
+
+.flex-cards{
+    display: flex; 
+    column-gap: 24px;   
+}
+
+.card{
+    /*border-color: var(--gray-light);
+    border-width: 1px;
+    border-style: solid;*/
+    border: 1px solid var(--gray-light);
+    border-radius: var(--rounded);
+    padding: 30px;
+}   
+
+.card h3{
+    color: var(--white);
+    font-size: 32px;
+}
+
+.card ul{
+    color:var(--gray-light);
+    text-align: left;
+    font-size: 18px;
+    line-height: 120%;
+    list-style-position: inside; /*posição do marcador da lista*/
+}
+
+.card btn{
+    display: block;
+
+}
+.card-destaque{
+ border-color: var(--contrast);
+ position: relative;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+.selo{
+    animation: rotate 10s infinite linear;
+    background-color:var(--contrast);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    line-height: 90%;
+    /*posição em relação ao elemento pai desde que ele tenha position*/
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    /*transform: rotate(14.223deg); poderia utilizar */
+}
+.card-destaque .price{
+ color: var(--contrast);
+}
+.price{
+    color: var(--gray-light);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.fale-conosco{
+    display: flex;
+    column-gap: 24px;
+}
+
+.fale-conosco input, .fale-conosco textarea{
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: var(--gray-light) solid 1px;
+    border-radius: 3px;
+    padding: 10px;
+    color: var(--white);
+    box-sizing: border-box; /*faz com que o padding e border não aumente as dimensões*/
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.fale-conosco textarea{
+    height: 140px;
+}
+
+.fale-conosco ::placeholder{
+    color: var(--gray-medium);
+}
+
+.footer{
+    background-color: var(--brand);
+    color: var(--white);
+    padding: 14px 194px /* vertical (top e bottom) horizontal (left/right)*/;
+   margin-top: var(--section-space);
+   margin-bottom: 30px;
+}
+
+.footer p{
+ margin: 0;
+}
+
+.social{
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    margin-bottom: var(--section-space);
+}
+
+#academia, #contato {
+    scroll-margin-top: 180px;
+}
+
+#planos{
+    scroll-margin-top: 120px;
+}
