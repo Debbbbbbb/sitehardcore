@@ -12,6 +12,7 @@
     --black: #000000;
     --rounded: 3px;
     --section-space: 100px;    
+    --swiper-theme-color: var(--brand)
 }
 
 */*seletor all - formata todos os elementos separadamente*/{
@@ -27,7 +28,41 @@ html{
 body{
     margin: 0;    
     background-color: var(--primary);
+    overflow-x: hidden; /*esconde o que ultrapassar a largura do body (escondendo o conteúdo)*/
 }
+
+.bg-popup{
+    width:100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position:fixed;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-popup-none{
+    display:none;
+}
+
+.close{
+    color: var(--brand);
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    right: 25px;
+    top:-20px; 
+    cursor: pointer;
+
+}
+
+.popup{
+
+    position: relative;}
+
+  
+
 
 h1,h2,h3,h4,h5,h6{
     margin: 0;
@@ -79,11 +114,14 @@ img{
 }
 
 .container{
-    width: 1140px; /*largura*/
+    /*width: 1140px; /*largura*/
+    max-width: 1140px; /*altura máxima torna o container flexível*/
     height: auto; /*altura*/
     /*centraliza a div*/
     margin-left: auto;
     margin-right: auto;    
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .header{
@@ -94,7 +132,7 @@ img{
     /*posição fixa APÓS começar a rolar a página*/
     position: sticky;
     top: 0;
-    z-index: 1;/*faz com que o elemento posicionado fique X camadas a cima*/
+    z-index: 100;/*faz com que o elemento posicionado fique X camadas a cima*/
 }
 
 
@@ -119,14 +157,31 @@ img{
     color: var(--brand);
 }
 
-.hero-section{
-    background-image: url(../img/background.jpg);
+.bg-1{
+    background-image: url(../img/background.jpg)
+}
+
+.bg-2{
+
+ background-image: url(../img/background-2.jpg)
+}
+
+.bg-3{
+
+    background-image: url(../img/background-3.jpg)
+   }
+.hero-section {
+
     background-size: cover; /*faz com que a imagem cubra toda a div*/
     height: calc(100vh - 100px); /*View Height -> Unidade referente ao navegador*/
     display: flex;
     align-items: center;
-    text-align: center;
-}
+    text-align: center;}
+
+
+
+
+
 
 .hero-section h1{
     color: var(--gray-light);
@@ -160,7 +215,8 @@ img{
 }
 
 .faca-parte .content{    
-    width: 850px;
+    width: calc(100% - 200px); /*toda vez que trabalha com position a imagem fica em cima do texto e é preciso descontar esse valor  100% do todo - a largura px imagem*/
+    max-width: 850px;
     padding: 37px 0;    
 }
 
@@ -304,3 +360,136 @@ img{
 #planos{
     scroll-margin-top: 120px;
 }
+
+/*mudança de leaught (designer responsivo) - ponto de quebra*/
+
+/*Para telas de no máx 1279px*/
+
+@media ( max-width:1279px) {
+
+    .menu{
+        /*display: none;*/
+        /*background-color: #050505;*/
+    
+        background-image:linear-gradient(black,#333333);
+        width: 100%;
+        height: calc(100vh - 100px); /*(100 do espaço todo menos o 100 do header que tem 100 de altura)*/
+        position: absolute;
+        left: 0;
+        top: 100px;
+
+        display: flex;
+        flex-direction: column;
+        transform: translateX(-110%); /*com 100vh faz com que o menu fique acima*/
+        transition: 0.3s;
+     
+    }
+
+    /*classe que será inserida/removida pelo js*/
+    .menu-open{
+        transform: translateX(0);
+    }
+
+    .menu a{
+        margin: 0;
+        /*border-bottom: 1px solid black;*/
+       padding: 25px 15px; /*o padding no link faz com que toda area se torne um link*/
+    }
+
+
+    .card h3{
+        font-size: 24px;
+    }
+
+    .bar{
+        width: 40px;
+        height: 3px;
+        background-color: var(--white);
+        margin-bottom: 3px;
+        transition: 0.3s;
+    }
+
+    .x .bar:first-child{
+        transform: rotate(45deg) translate(5px,5px);
+    }
+
+    .x .bar:last-child{
+        transform: rotate(-45deg) translate(3px,-3px);
+    }
+
+    .x .bar:nth-child(2) {
+      opacity: 0;
+      /*transform:translateX(-200px); para a barra do meio sair correndo*/
+    }
+
+    .hero-section{
+
+        /* height:auto;
+        padding-top:94px;
+        padding-bottom:94px;*/
+
+        height: 420px;
+        background-position: center;
+    }
+
+        .hero-section h1{
+            font-size: 36px;
+        }
+
+        .hero-section p{
+            font-size: 18px;
+        }
+
+}
+   
+
+@media (max-width:1023px) {
+
+            .nossa-academia{
+
+                flex-direction: column;
+                row-gap: 40px;
+            }
+        
+            .nossa-academia img{
+                width: 100%;
+            }
+            
+            .flex-cards{
+                /*quando o direction estiver em coluna, justify-content e align- items trocam o alinhamento*/
+                flex-direction: column;
+                row-gap: 30px;
+                align-items: center;
+            }
+            .card{
+                max-width: 450px;
+            }
+            .fale-conosco{
+                flex-direction: column;
+                row-gap: 30px;
+            
+            }
+            .fale-conosco iframe{
+                width: 100%;
+            }
+            .footer{
+                padding: 14px;
+            }
+
+}
+    
+@media (max-width:650px){
+    .faca-parte .content{
+        width: 100%;
+    }
+
+    .faca-parte .image{
+        display: none;
+    }
+
+    .popup img{
+        width: 320px;
+    }
+
+}
+
